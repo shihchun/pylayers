@@ -75,7 +75,7 @@ class EMSolver(object):
 
     def __init__(self,L=Layout()):
 
-        self.config  = ConfigParser.ConfigParser()
+        self.config  = ConfigParser.ConfigParser(inline_comment_prefixes=(';',),comment_prefixes=('#',';'))
         self.fileini ='EMSolver.ini'
         self.config.read(pyu.getlong(self.fileini,pstruc['DIRSIMUL']))
 

@@ -1054,7 +1054,7 @@ class MatDB(PyLayers,dict):
 
         """
         fileini = pyu.getlong(_fileini, pstruc['DIRMAT'])
-        materials = configparser.ConfigParser()
+        materials = configparser.ConfigParser(inline_comment_prefixes=(';',),comment_prefixes=('#',';'))
         materials.read(fileini)
         for k,matname in enumerate(materials.sections()):
             M = Mat(name=matname)
@@ -1079,7 +1079,7 @@ class MatDB(PyLayers,dict):
         """
         fileini = pyu.getlong(_fileini, pstruc['DIRMAT'])
         fd = open(fileini, "w")
-        config = configparser.ConfigParser()
+        config = configparser.ConfigParser(inline_comment_prefixes=(';',),comment_prefixes=('#',';'))
         #
         # config names
         #
@@ -1953,7 +1953,7 @@ class SlabDB(dict):
 
         """
         fileini = pyu.getlong(_fileini, pstruc['DIRMAT'])
-        config = configparser.ConfigParser()
+        config = configparser.ConfigParser(inline_comment_prefixes=(';',),comment_prefixes=('#',';'))
         config.read(fileini)
 
         if hasattr(self,'mat'):

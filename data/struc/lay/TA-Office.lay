@@ -183,6 +183,6 @@ PLASTER = {'mur': (1+0j), 'epr': (8+0j), 'roughness': 0.0, 'sigma': 0.038}
 REINFORCED_CONCRETE = {'sigma': 3.0, 'roughness': 0.0, 'epr': (8.69999980927+0j), 'mur': (1+0j)}
 
 [indoor]
-floor = 0
-ceil = 3
+zfloor = 0
+zceil = 3
 

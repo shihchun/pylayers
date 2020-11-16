@@ -91,7 +91,7 @@ class ShowNet(Process):
         self.info = False
 
         self.coll_plot = {}
-        self.C = ConfigParser.ConfigParser()
+        self.C = ConfigParser.ConfigParser(inline_comment_prefixes=(';',),comment_prefixes=('#',';'))
         self.C.read(pyu.getlong('show.ini','ini'))
         self.wstdcolor = dict(self.C.items('wstdcolor'))
         self.wstdes = dict(self.C.items('wstdestyle'))

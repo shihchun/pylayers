@@ -1239,7 +1239,7 @@ class Network(PyLayers,nx.MultiDiGraph):
 
 
         """
-        C = ConfigParser.ConfigParser()
+        C = ConfigParser.ConfigParser(inline_comment_prefixes=(';',),comment_prefixes=('#',';'))
         C.read(pyu.getlong('show.ini', 'ini'))
         color = ['r', 'g', 'b', 'm', 'y', 'c']*5
         style = ['-']*10
@@ -1430,7 +1430,7 @@ class Network(PyLayers,nx.MultiDiGraph):
         loc=False
         method = []
         # get methods for localization
-        simcfg = ConfigParser.ConfigParser()
+        simcfg = ConfigParser.ConfigParser(inline_comment_prefixes=(';',),comment_prefixes=('#',';'))
         simcfg.read(pyu.getlong('simulnet.ini','ini'))
         save =eval(simcfg.get('Save','save'))
         if 'loc' in save:
@@ -1443,7 +1443,7 @@ class Network(PyLayers,nx.MultiDiGraph):
                 AP.append(pos[i][0])
                 if not os.path.isfile(pyu.getlong(str(pos[i][0]) + '.ini',pstruc['DIRNETSAVE'])):
                     file=open(pyu.getlong(str(pos[i][0]) + '.ini',pstruc['DIRNETSAVE']),'w')
-                    config = ConfigParser.ConfigParser()
+                    config = ConfigParser.ConfigParser(inline_comment_prefixes=(';',),comment_prefixes=('#',';'))
                     config.add_section('coordinates')
 #                    config.set('coordinates',str(api), str(pos[i][1][0]) + ' ' + str(pos[i][1][1]) + ' '+str(height))
                     config.set('coordinates','1', str(pos[i][1][0]) + ' ' + str(pos[i][1][1]) + ' '+str(height))
@@ -1452,7 +1452,7 @@ class Network(PyLayers,nx.MultiDiGraph):
                     file.close()
             else:
                 AG.append(pos[i][0])
-                config = ConfigParser.ConfigParser()
+                config = ConfigParser.ConfigParser(inline_comment_prefixes=(';',),comment_prefixes=('#',';'))
                 if not os.path.isfile(pyu.getlong(str(pos[i][0]) + '.ini',pstruc['DIRNETSAVE'])):
                     file=open(pyu.getlong(str(pos[i][0]) + '.ini',pstruc['DIRNETSAVE']),'w')
                     config.add_section('coordinates')
@@ -1482,7 +1482,7 @@ class Network(PyLayers,nx.MultiDiGraph):
         if 'pyray' in save :
 
             file2=open(pyu.getlong('pyray.ini',pstruc['DIRNETSAVE']),'w')
-            config = ConfigParser.ConfigParser()
+            config = ConfigParser.ConfigParser(inline_comment_prefixes=(';',),comment_prefixes=('#',';'))
             config.add_section('nodes')
             config.add_section('layout')
             config.add_section('simulation')
@@ -1496,7 +1496,7 @@ class Network(PyLayers,nx.MultiDiGraph):
         if 'loc' in save :
 
             file2=open(pyu.getlong('loc.ini',pstruc['DIRNETSAVE']),'w')
-            config = ConfigParser.ConfigParser()
+            config = ConfigParser.ConfigParser(inline_comment_prefixes=(';',),comment_prefixes=('#',';'))
             config.add_section('nodes')
             config.add_section('simulation')
             config.set('nodes','AG',str(AG))
@@ -1742,7 +1742,7 @@ class Network(PyLayers,nx.MultiDiGraph):
         ### save agent positions
         for i in range(len(pos)):
             if self.node[pos[i][0]]['typ'] !='ap':
-                config = ConfigParser.ConfigParser()
+                config = ConfigParser.ConfigParser(inline_comment_prefixes=(';',),comment_prefixes=('#',';'))
                 config.read(pyu.getlong(str(pos[i][0]) + '.ini',pstruc['DIRNETSAVE']))
                 config.set('coordinates',str(self.idx+1),value = str(pos[i][1][0]) + ' ' + str(pos[i][1][1]) + ' '+str(height))
                 file=open(pyu.getlong(str(pos[i][0]) + '.ini',pstruc['DIRNETSAVE']),'w')
@@ -1778,7 +1778,7 @@ class Network(PyLayers,nx.MultiDiGraph):
         ### save agent positions estimations
         for n in node:
             if self.node[n]['typ'] !='ap':
-                config = ConfigParser.ConfigParser()
+                config = ConfigParser.ConfigParser(inline_comment_prefixes=(';',),comment_prefixes=('#',';'))
                 config.read(pyu.getlong(str(n[0]) + '.ini',pstruc['DIRNETSAVE']))
                 if pe_alg != {} :
                     config.set('alg_est',str(self.idx+1),value = str(pe_alg[n[0]][0]) + ' ' + str(pe_alg[n[0]][1]) + ' '+str(height))
@@ -1837,7 +1837,7 @@ class Network(PyLayers,nx.MultiDiGraph):
         else:
             file=open(pyu.getlong(filename ,'output'),'a')
 
-        config = ConfigParser.ConfigParser()
+        config = ConfigParser.ConfigParser(inline_comment_prefixes=(';',),comment_prefixes=('#',';'))
         timestamp = pyu.timestamp(S.now())
         config.add_section(timestamp)
         for e in self.edges():

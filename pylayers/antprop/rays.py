@@ -1579,7 +1579,7 @@ class Rays(PyLayers, dict):
                             #
 
                             [ray_to_delete.append(u[1][i]) for i in range(len(zp))
-                            if ((ltu_slab[i][0]=='AIR') & (ltu_slab[i][1]=='AIR'))]
+                            if ((list(ltu_slab)[i][0]=='AIR') & (list(ltu_slab)[i][1]=='AIR'))]
                             # #zinterval = L.Gs.node[s]['z']
                             # # if (zs<=zinterval[1]) & (zs>=zinterval[0]):
                             # if ((tu_slab[0]!='AIR') & (tu_slab[1]!='AIR')):

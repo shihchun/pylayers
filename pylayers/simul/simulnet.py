@@ -96,7 +96,7 @@ class Simul(object):  # Simpy 3
         simpy.RealtimeEnvironment.__init__(self)  #simpy 3
         #self.initialize()
 
-        self.config = ConfigParser.ConfigParser()
+        self.config = ConfigParser.ConfigParser(inline_comment_prefixes=(';',),comment_prefixes=('#',';'))
         filename = pyu.getlong('simulnet.ini', pstruc['DIRSIMUL'])
 
         self.config.read(filename)

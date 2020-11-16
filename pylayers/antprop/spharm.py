@@ -21,7 +21,10 @@ import scipy as sp
 import scipy.special as special
 from scipy import io
 import matplotlib.pylab as plt
-import scipy.misc
+# from scipy.misc import factorial
+# to
+from scipy.special import factorial
+# import scipy.misc
 import pylayers.util.pyutil as pyu
 from pylayers.util.project import *
 from pylayers.util.plotutil import *
@@ -1684,7 +1687,7 @@ def AFLegendre3(L, M, x):
     # Warning : this is a dangerous factorial ratio
     # surprinsingly it works well
     #
-    C1 = np.sqrt((LL + 0.5) * scipy.misc.factorial(LL - MM) / scipy.misc.factorial(LL + MM))
+    C1 = np.sqrt((LL + 0.5) * factorial(LL - MM) / factorial(LL + MM))
     Pml = special.lpmv(MM,LL,x)*C1
 
     Pml = np.swapaxes(Pml,0,2)
@@ -1771,7 +1774,7 @@ def AFLegendre2(L, M, x):
     # Warning : this is a dangerous factorial ratio
     # surprinsingly it works well
     #
-    C1 = np.sqrt((LL + 0.5) * scipy.misc.factorial(LL - MM) / scipy.misc.factorial(LL + MM))
+    C1 = np.sqrt((LL + 0.5) * factorial(LL - MM) / factorial(LL + MM))
     for i in range(nx):
         if M < L:
             pml = special.lpmn(M + 1, L, x[i])[0]
@@ -1857,7 +1860,7 @@ def AFLegendre(N, M, x):
     # Warning : this is a dangerous factorial ratio
     # surprinsingly it works well
     #
-    C1 = np.sqrt((NN + 0.5) * scipy.misc.factorial(NN - MM) / scipy.misc.factorial(NN + MM))
+    C1 = np.sqrt((NN + 0.5) * factorial(NN - MM) / factorial(NN + MM))
     del MM
     del NN
     for i in range(nx):

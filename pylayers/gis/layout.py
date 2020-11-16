@@ -2210,8 +2210,12 @@ class Layout(pro.PyLayers):
         #   zfloor
         #
         if self.typ == 'indoor':
-            self.zceil = eval(di['indoor']['zceil'])
-            self.zfloor = eval(di['indoor']['zfloor'])
+            if 'ceil' in di['indoor'].keys():
+                self.zceil = eval(di['indoor']['ceil'])
+                self.zfloor = eval(di['indoor']['floor'])
+            else:
+                self.zceil = eval(di['indoor']['zceil'])
+                self.zfloor = eval(di['indoor']['zfloor'])
 
         # old format
         if self.typ == 'floorplan':

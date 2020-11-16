@@ -196,7 +196,7 @@ class Person(Process):
                 self.nextroomId   = random.sample(self.L.Gr.nodes(),1)[0]
             #self.sim.roomlist.append(self.nextroomId) # list of all destiantion of all nodes in object sim
         elif self.cdest == 'file':
-           cfg = ConfigParser.ConfigParser()
+           cfg = ConfigParser.ConfigParser(inline_comment_prefixes=(';',),comment_prefixes=('#',';'))
            cfg.read(pyu.getlong('nodes_destination.ini','ini'))
            self.room_seq=eval(dict(cfg.items(self.ID))['room_seq'])
            self.room_wait=eval(dict(cfg.items(self.ID))['room_wait'])

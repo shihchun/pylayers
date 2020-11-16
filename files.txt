@@ -1,0 +1,1 @@
+c:\tools\anaconda3\lib\site-packages\pylayers-0.5-py3.8.egg

@@ -927,7 +927,7 @@ class SCPI(PyLayers):
         """ load the whole set of calibration config
         """
         filename = pyu.getlong(_filename, pstruc['DIRMES'])
-        cal_conf  = ConfigParser.ConfigParser()
+        cal_conf  = ConfigParser.ConfigParser(inline_comment_prefixes=(';',),comment_prefixes=('#',';'))
         cal_conf.read(filename)
         #pdb.set_trace()
         sections  = cal_conf.sections()

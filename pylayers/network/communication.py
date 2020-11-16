@@ -71,7 +71,7 @@ class dcond(dict):
     """
 
     def __init__(self,ID=0):
-        Cf = ConfigParser.ConfigParser()
+        Cf = ConfigParser.ConfigParser(inline_comment_prefixes=(';',),comment_prefixes=('#',';'))
         Cf.read(pyu.getlong('agent.ini','ini'))
         self.ag_opt = dict(Cf.items(ID))
         self.parse()
@@ -151,7 +151,7 @@ class TX():
             #Process.__init__(self,env,generator)
             # Python3 implementation not done
 
-        Cf = ConfigParser.ConfigParser()
+        Cf = ConfigParser.ConfigParser(inline_comment_prefixes=(';',),comment_prefixes=('#',';'))
         Cf.read(pyu.getlong('agent.ini','ini'))
         for s in Cf.sections():
             try:
@@ -349,7 +349,7 @@ class RX():
 
         Process.__init__(self,name='Rx-'+str(self.ID),sim=self.sim)
 
-        Cf = ConfigParser.ConfigParser()
+        Cf = ConfigParser.ConfigParser(inline_comment_prefixes=(';',),comment_prefixes=('#',';'))
         Cf.read(pyu.getlong('agent.ini','ini'))
         for s in Cf.sections():
             try:
@@ -616,7 +616,7 @@ class Gcom(nx.MultiDiGraph):
         self.devt = {}
 
     def load_dec_file(self):
-        self.config = ConfigParser.ConfigParser()
+        self.config = ConfigParser.ConfigParser(inline_comment_prefixes=(';',),comment_prefixes=('#',';'))
         self.config.read(pyu.getlong(self.fileini,pstruc['DIRSIMUL']))
         nodes = self.config.sections()
         ntype = nx.get_node_attributes(self.net,'typ')

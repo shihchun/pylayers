@@ -236,7 +236,7 @@ class Body(PyLayers):
             raise NameError(_filebody + ' cannot be found in'
                              + filebody)
 
-        config = ConfigParser.ConfigParser()
+        config = ConfigParser.ConfigParser(inline_comment_prefixes=(';',),comment_prefixes=('#',';'))
         config.read(filebody)
         sections = config.sections()
         di = {}

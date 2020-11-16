@@ -92,8 +92,8 @@ class Coverage(PyLayers):
         """
 
 
-        self.config = ConfigParser.ConfigParser(allow_no_value=True)
-        self.config.read(pyu.getlong(_fileini,pstruc['DIRSIMUL']))
+        self.config = ConfigParser.ConfigParser(allow_no_value=True,inline_comment_prefixes=(';',))
+        self.config.read(pyu.getlong(_fileini,pstruc['DIRSIMUL']), encoding='utf-8')
 
         # section layout
         self.layoutopt = dict(self.config.items('layout'))
