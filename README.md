@@ -1,4 +1,7 @@
 # PyLayers 
+
+What I change after initial forked [check here](https://github.com/pylayers/pylayers/issues/354)
+
 <img src="https://raw.githubusercontent.com/pylayers/doc/master/_static/logo.png" width="150">
 
 
